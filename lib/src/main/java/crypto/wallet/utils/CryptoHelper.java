@@ -1,5 +1,7 @@
 package crypto.wallet.utils;
 
+import org.bouncycastle.crypto.util.PublicKeyFactory;
+
 import java.security.*;
 import java.security.spec.ECGenParameterSpec;
 import java.security.spec.NamedParameterSpec;
@@ -22,5 +24,7 @@ public class CryptoHelper {
     public static KeyPair generateECKeyPair() throws InvalidAlgorithmParameterException, NoSuchAlgorithmException {
         return generateECKeyPair(DEFAULT_SEC_NAME, DEFAULT_ALGORITHM);
     }
+
+
 
 }

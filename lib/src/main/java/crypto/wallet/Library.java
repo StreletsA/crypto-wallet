@@ -12,15 +12,21 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 
+import static crypto.wallet.utils.Convertor.*;
+
 public class Library {
     public static void main(String[] args) throws InvalidAlgorithmParameterException, NoSuchAlgorithmException, UnsupportedEncodingException, SignatureException, InvalidKeyException {
         CryptoCard card = new EthereumCard();
+
         String privateKey = card.getPrivateKeyAsBase64();
         String publicKey = card.getPublicKeyAsBase64();
 
         System.out.println(card.getPrivateKeyAsHex().toLowerCase());
         System.out.println(card.getPublicKeyAsHex().toLowerCase());
         System.out.println(card.getAddress().toLowerCase());
-        System.out.println(card.calculateSignatureAsHex("Hello, world").toLowerCase());
+        String test = "{from: \"0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8\",to: \"0xac03bb73b6a9e108530aff4df5077c2b3d481e5a\",gasLimit: \"21000\",maxFeePerGas: \"300\", maxPriorityFeePerGas: \"10\", nonce: \"0\", value: \"10000000000\"}";
+        String a = "0xf86c0a8502540be400825208944bbeeb066ed09b7aed07bf39eee0460dfa261520880de0b6b3a7640000801ca0f3ae52c1ef3300f44df0bcfd1341c232ed6134672b16e35699ae3f5fe2493379a023d23d2955a239dd6f61c4e8b2678d174356ff424eac53da53e17706c43ef871";
+        System.out.println(a.length());
+        System.out.println(card.calculateSignatureAsHex(utf8ToHex(test)).toLowerCase().length());
     }
 }

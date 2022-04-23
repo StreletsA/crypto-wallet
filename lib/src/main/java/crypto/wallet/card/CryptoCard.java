@@ -17,7 +17,7 @@ public abstract class CryptoCard {
     String publicKey;
     String address;
     String algorithm;
-    String concurrency;
+    CryptoConcurrency concurrency;
     KeyPair keyPair;
 
     public abstract byte[] calculateSignature(String itemForSigningAsHex) throws SignatureException, InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException;
